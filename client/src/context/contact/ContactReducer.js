@@ -31,6 +31,9 @@ export default (state, action) => {
         contacts: state.contacts.map((contact) =>
           contact._id === action.payload._id ? action.payload : contact
         ),
+        filtered: state.filtered.map((contact) =>
+          contact._id === action.payload._id ? action.payload : contact
+        ),
         current: null,
         loading: false,
       };
@@ -38,6 +41,9 @@ export default (state, action) => {
       return {
         ...state,
         contacts: state.contacts.filter(
+          (contact) => contact._id !== action.payload
+        ),
+        filtered: state.filtered.filter(
           (contact) => contact._id !== action.payload
         ),
         loading: false,

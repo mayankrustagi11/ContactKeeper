@@ -18,7 +18,7 @@ router.get("/", auth, async (req, res) => {
     res.json(contacts);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -48,7 +48,7 @@ router.post(
       const contact = await newContact.save();
       res.status(201).json(contact);
     } catch (err) {
-      res.status(500).json("Server Error");
+      res.status(500).json({ msg: "Server Error" });
     }
   }
 );
@@ -85,7 +85,7 @@ router.put("/:id", auth, async (req, res) => {
     res.status(200).json(contact);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -108,7 +108,7 @@ router.delete("/:id", auth, async (req, res) => {
     res.status(200).json({ msg: "Contact Deleted" });
   } catch (err) {
     console.error(err.message);
-    res.status(500).json("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
